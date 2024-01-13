@@ -1,9 +1,10 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 function Index() {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
-
+  const router = useRouter();
   const signIn = async (e) => {
     e.preventDefault();
 
@@ -17,7 +18,18 @@ function Index() {
       body: JSON.stringify(user),
     });
 
-    console.log("res ", res);
+    if (res.status === 200) {
+      setIdentifier("");
+      setPassword("");
+      alert("Login Successfully");
+      router.replace("/dashboard");
+    } else if (res.status === 422) {
+      alert("Username or Password is not Valid !!");
+    } else if (res.status === 404) {
+      alert("User not Found !!");
+    } else if (res.status === 404) {
+      alert("Unknown internal server error !!");
+    }
   };
   return (
     <div className="box">
