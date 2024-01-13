@@ -16,18 +16,17 @@ const handler = async (req, res) => {
     if (!identifier.trim() || !password.trim()) {
       return res.status(422).json({ message: "Data is not valid !!" });
     }
+
     // Check if the user exist or not
     const user = await UserModel.findOne({
       $or: [{ userName: identifier }, { email: identifier }],
     });
-
     if (!user) {
       return res.status(404).json({ message: "User not found !!" });
     }
+
     // Check User Password is Valid or not
-
     const isValidPassword = await verifyPassword(password, user.password);
-
     if (!isValidPassword) {
       return res
         .status(422)
