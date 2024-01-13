@@ -1,5 +1,6 @@
 import UserModel from "@/models/user";
 import connectToDB from "@/configs/db";
+import { hashPassword } from "@/utils/auth";
 
 const handler = async (req, res) => {
   if (req.method !== "POST") {
@@ -29,17 +30,17 @@ const handler = async (req, res) => {
         .status(422)
         .json({ message: "This Username or Email already Exist!!" });
     }
-    // HashPassword
     // GenerateToken
 
     //! Create
-
+    //? HashPassword
+    const hashedPassword = await hashPassword(password);
     await UserModel.create({
       firstName,
       lastName,
       userName,
       email,
-      password,
+      password: hashedPassword,
       role: "USER",
     });
 
