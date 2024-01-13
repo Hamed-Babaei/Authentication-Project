@@ -1,7 +1,7 @@
 import UsersModel from "@/models/user";
 import connectToDB from "@/configs/db";
 import { serialize } from "cookie";
-import { generateToken, hashPassword, verifyPassword } from "@/utils/auth";
+import { generateToken, verifyPassword } from "@/utils/auth";
 
 const handler = async (req, res) => {
   if (req.method !== "POST") {
@@ -23,6 +23,8 @@ const handler = async (req, res) => {
     }
     // Check User Password is Valid or not
     const isValidPassword = await verifyPassword(password, user.password);
+    console.log("isValidPassword: ", isValidPassword);
+
     if (!isValidPassword) {
       return res
         .status(422)
@@ -31,7 +33,9 @@ const handler = async (req, res) => {
 
     //! If All The Information Was Correct
     const token = generateToken({ email: user.email });
-    return res
+    console.log("token => ", token);
+
+    res
       .setHeader(
         "Set-Cookie",
         serialize("token", token, {
@@ -45,7 +49,7 @@ const handler = async (req, res) => {
   } catch (err) {
     return res
       .status(500)
-      .json({ message: "Unknown Internal Server Error", err });
+      .json({ message: "Unknown Internal Server Error :=>", err });
   }
 };
 
