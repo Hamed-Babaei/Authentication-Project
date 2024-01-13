@@ -11,6 +11,7 @@
 
 # next.js
 /.next/
+/.next/trace/
 /out/
 
 # production
@@ -34,3 +35,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.next/trace
+.next/trace
+.next/trace
+.vscode/settings.json

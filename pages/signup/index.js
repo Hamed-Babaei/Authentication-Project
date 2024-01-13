@@ -20,13 +20,16 @@ function Index() {
       body: JSON.stringify(user),
     });
 
-    if (res.ok) {
+    if (res.status === 201) {
       setFirstName("");
       setLastName("");
       setUserName("");
       setEmail("");
       setPassword("");
+      alert("Registered Successfully :))");
       router.push("/dashboard");
+    } else if (res.status === 422) {
+      alert("This Username or Email already Exist!!");
     }
   };
   return (

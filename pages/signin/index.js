@@ -7,7 +7,7 @@ function Index() {
       <form role="form" method="post">
         <div className="inputBox">
           <input type="text" autoComplete="off" required />
-          <label>Username</label>
+          <label>Username | Email</label>
         </div>
         <div className="inputBox">
           <input type="password" autoComplete="off" required />
