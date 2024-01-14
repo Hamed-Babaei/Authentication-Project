@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-
+import { useRouter } from "next/router";
+//? Start FontAwesome Import
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
@@ -11,8 +12,10 @@ import {
   faSolarPanel,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
+//? End FontAwesome Import
 
 function Index() {
+  const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -47,7 +50,7 @@ function Index() {
                     Dashboard
                   </Link>
                 </li>
-                <li>
+                <li onClick={signOut}>
                   <Link href="#">
                     <span>
                       <FontAwesomeIcon icon={faSignOut} />
