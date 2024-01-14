@@ -7,13 +7,13 @@ function Index() {
   const router = useRouter();
 
   //? FOR Route Protection Best Way Is ( SSR - Route Protection ) 🎯 {
-  // useEffect(() => {
-  //   fetch("/api/auth/me").then((res) => {
-  //     if (res.status === 200) {
-  //       router.replace("/dashboard");
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    fetch("/api/auth/me").then((res) => {
+      if (res.status === 200) {
+        router.replace("/dashboard");
+      }
+    });
+  }, []);
   //? }
   const signIn = async (e) => {
     e.preventDefault();

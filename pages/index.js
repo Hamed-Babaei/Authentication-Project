@@ -14,12 +14,18 @@ import {
 
 function Index() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const userAuth = async () => {
       const res = await fetch("/api/auth/me");
       if (res.status === 200) {
         setIsLoggedIn(true);
+        const { data: user } = await res.json();
+        console.log(user);
+        if (user.role === "ADMIN") {
+          setIsAdmin(true);
+        }
       }
     };
     userAuth();
@@ -70,17 +76,19 @@ function Index() {
                 </li>
               </>
             )}
+            {isAdmin && (
+              <>
+                <li>
+                  <Link href="/p-admin">
+                    <span>
+                      <FontAwesomeIcon icon={faSolarPanel} />
+                    </span>
+                    Admin panel
+                  </Link>
+                </li>
+              </>
+            )}
           </>
-
-          {/* User is login & admin */}
-          {/* <li>
-            <Link href="/p-admin">
-              <span>
-                <FontAwesomeIcon icon={faSolarPanel} />
-              </span>
-              Admin panel
-            </Link>
-          </li> */}
         </ul>
         <img className="wave" src="/Images/wave.svg" alt="wave" />
       </aside>
