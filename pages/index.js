@@ -33,6 +33,17 @@ function Index() {
     };
     userAuth();
   }, []);
+
+  const signOut = async () => {
+    const res = await fetch("/api/auth/signout");
+    const data = await res.json();
+    if (res.status === 200) {
+      setIsAdmin(false);
+      setIsLoggedIn(false);
+      router.replace("/");
+      alert("User Logged Out Successfully :))");
+    }
+  };
   return (
     <div className="container">
       <aside className="sidebar">
