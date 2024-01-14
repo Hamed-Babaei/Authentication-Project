@@ -2,7 +2,6 @@ import connectToDB from "@/configs/db";
 import { verifyToken } from "@/utils/auth";
 import UserModel from "@/models/user";
 import React from "react";
-import { redirect } from "next/dist/server/api-utils";
 
 function PAdmin({ user }) {
   return (
@@ -11,7 +10,8 @@ function PAdmin({ user }) {
     </h1>
   );
 }
-
+//! SSR - Route Protection ✅
+//? FOR Route Protection Best Way Is ( SSR - Route Protection ) 🎯
 export async function getServerSideProps(context) {
   const { token } = context.req.cookies;
   connectToDB();
