@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 
 function Index() {
+  const router = useRouter();
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const signin = async (e) => {
@@ -12,7 +13,9 @@ function Index() {
       password,
       redirect: false,
     });
-    console.log(res);
+    if (res.status === 200) {
+      router.replace("/dashboard");
+    }
   };
 
   return (
