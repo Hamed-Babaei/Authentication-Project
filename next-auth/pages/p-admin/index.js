@@ -15,7 +15,6 @@ export default function index({ user }) {
 //? SSR Route Protection => (RBAK)
 export async function getServerSideProps({ req }) {
   const session = await getSession({ req });
-  console.log("Session => ", session);
 
   if (!session) {
     return {

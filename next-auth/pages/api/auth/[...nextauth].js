@@ -24,7 +24,6 @@ export default NextAuth({
       //     },
       //   },
       async authorize(credentials, req) {
-        console.log("credentials :", credentials);
         connectToDB();
         const { identifier, password } = credentials;
         if (!identifier.trim() || !password.trim()) {

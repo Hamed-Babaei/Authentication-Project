@@ -1,7 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { useEffect } from "react/cjs/react.production.min";
+import React, { useState, useEffect } from "react";
 
 function Index() {
   const router = useRouter();

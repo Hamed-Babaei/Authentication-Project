@@ -12,7 +12,6 @@ export default function index({ user }) {
 //? SSR Route Protection =>
 export async function getServerSideProps({ req }) {
   const session = await getSession({ req });
-  console.log("Session => ", session);
 
   if (!session) {
     return {
