@@ -37,7 +37,7 @@ const handler = async (req, res) => {
 
     //? GenerateToken
     const token = generateToken({ email });
-    console.log("token", token);
+    "token", token;
 
     const users = await UserModel.find({});
 

@@ -25,7 +25,7 @@ function Index() {
       if (res.status === 200) {
         setIsLoggedIn(true);
         const { data: user } = await res.json();
-        console.log(user);
+        user;
         if (user.role === "ADMIN") {
           setIsAdmin(true);
         }

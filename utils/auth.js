@@ -25,7 +25,7 @@ const verifyToken = (token) => {
     const validationResult = verify(token, process.env.privateKey);
     return validationResult;
   } catch (error) {
-    console.log("Verify Token Error", error);
+    "Verify Token Error", error;
     return false;
   }
 };

@@ -11,13 +11,13 @@ const handler = async (req, res) => {
     connectToDB();
 
     const { token } = req.cookies;
-    console.log("token => ", token);
+    "token => ", token;
 
     if (!token) {
       return res.json.status(401).json({ message: "You are not login !!" });
     }
     const tokenPayload = verifyToken(token);
-    console.log("tokenPayload => ", tokenPayload);
+    "tokenPayload => ", tokenPayload;
     if (!tokenPayload) {
       return res.json.status(401).json({ message: "You are not login !!" });
     }

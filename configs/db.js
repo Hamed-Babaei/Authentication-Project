@@ -6,10 +6,10 @@ const connectToDB = async () => {
       return true;
     } else {
       await mongoose.connect("mongodb://127.0.0.1/next-auth");
-      console.log("Connect To Database Successfully");
+      ("Connect To Database Successfully");
     }
   } catch (error) {
-    console.log("Database Connection has error", error);
+    "Database Connection has error", error;
   }
 };
 

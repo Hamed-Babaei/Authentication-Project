@@ -25,7 +25,7 @@ export async function getServerSideProps(context) {
   }
 
   const tokenPayload = verifyToken(token);
-  console.log("tokenPayload", tokenPayload);
+  "tokenPayload", tokenPayload;
   if (!tokenPayload) {
     return {
       redirect: {

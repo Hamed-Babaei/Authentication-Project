@@ -4,7 +4,7 @@ import React from "react";
 import UserModel from "@/models/user";
 
 function Dashboard({ user }) {
-  console.log(user);
+  user;
   return (
     <>
       <h1>
@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
   }
 
   const tokenPayload = verifyToken(token);
-  console.log("tokenPayload", tokenPayload);
+  "tokenPayload", tokenPayload;
   if (!tokenPayload) {
     return {
       redirect: {
@@ -40,7 +40,7 @@ export async function getServerSideProps(context) {
     { email: tokenPayload.email },
     "firstName lastName"
   );
-  console.log("User", user);
+  "User", user;
 
   return {
     props: {
